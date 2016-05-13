@@ -1,0 +1,28 @@
+{
+    "name": "lakshmajim/thumbnail",
+    "description": "Thumbnails for videos",
+    "keywords": [
+        "Thumbnails"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "lakshmajim",
+            "email": ""
+        }
+    ],
+    "require": {
+        "php-ffmpeg/php-ffmpeg": "~0.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lakshmajim\\Thumbnail\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
+
+
+
+
+
