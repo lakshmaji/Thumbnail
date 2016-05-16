@@ -76,7 +76,7 @@ class Thumbnail
                     $logoWidth   = imagesx($src);
                     $logoHeight  = imagesy($src);
 
-                    imagecopy($dest, $src,($imageWidth-$logoWidth)/2,($imageHeight-$logoHeight)/2, 0, 0,$logoWidth, $logoHeight, 100);
+                    imagecopy($dest, $src,($imageWidth-$logoWidth)/2,($imageHeight-$logoHeight)/2, 0, 0,$imageWidth, $imageHeight);
 
                     // Output and free from memory
                     imagejpeg($dest,$result_image);
