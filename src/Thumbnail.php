@@ -11,7 +11,7 @@ namespace Lakshmajim\Thumbnail;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use Exception;
+// use Exception;
 use FFMpeg\FFMpeg;
 use FFMpeg\Coordinate;
 
@@ -68,21 +68,26 @@ class Thumbnail
             {
                 if($wm)
                 {
-                    $src         = imagecreatefrompng($water_mark);
-                    $dest        = imagecreatefromjpeg($result_image);
-                    // Get dimensions
-                    $imageWidth  = imagesx($dest);
-                    $imageHeight = imagesy($dest);
-                    $logoWidth   = imagesx($src);
-                    $logoHeight  = imagesy($src);
+                    $src       = imagecreatefrompng($water_mark);
+                    $got_image = imagecreatefromjpeg($result_image);
+            
+                    // Get dimensions of image screen shot
+                    $width     = imagesx($got_image);
+                    $height    = imagesy($got_image);
 
-                    imagecopy($dest, $src,($imageWidth-$logoWidth)/2,($imageHeight-$logoHeight)/2, 0, 0,$imageWidth, $imageHeight);
+                    // final output image dimensions
+                    $newwidth  = env('THUMBNAIL_IMAGE_WIDTH');   
+                    $newheight = env('THUMBNAIL_IMAGE_HEIGHT');
 
-                    // Output and free from memory
-                    imagejpeg($dest,$result_image);
+                    $tmp       = imagecreatetruecolor($newwidth,$newheight);
 
-                    imagedestroy($dest);
-                    imagedestroy($src);
+                    imagecopyresampled($tmp,$got_image,0,0,0,0,$newwidth,$newheight,$width,$height);
+
+                    // Set the brush
+                    imagesetbrush($tmp, $src);
+                    // Draw a couple of brushes, each overlaying each
+                    imageline($tmp, imagesx($tmp) / 2, imagesy($tmp) / 2, imagesx($tmp) / 2, imagesy($tmp) / 2, IMG_COLOR_BRUSHED);
+                    imagejpeg($tmp,$result_image,100);
                 }
                 return true;
             }
@@ -94,7 +99,7 @@ class Thumbnail
         catch(Exception $thumbnailException)
         {
             // error processing request
-            echo "Got Cookie";
+            echo "Got Bad Cookie";
         }
     }
 
