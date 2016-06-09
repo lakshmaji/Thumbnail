@@ -24,9 +24,10 @@ This pckage relays on [FFMpeg](https://en.wikipedia.org/wiki/FFmpeg), A complete
             sudo apt-get update sudo apt-get dist-upgrade
         ```
     - Now FFmpeg is available to be installed with **apt** , Run this command
-        ```terminal
+        ```bash
             sudo apt-get install ffmpeg
         ```
+        
 ---
 >### Installation
 
