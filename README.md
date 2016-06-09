@@ -11,6 +11,7 @@
 
 ---
 >### Installing dependency software
+
 This pckage relays on [FFMpeg](https://en.wikipedia.org/wiki/FFmpeg), A complete, cross-platform solution to record, convert and stream audio and video i.e, Multimedia .
 1. Installing on Ubuntu
     - Add the mc3man ppa
@@ -47,6 +48,7 @@ Lakshmajim\Thumbnail\ThumbnailServiceProvider::class,
     ```
 ---
 >### Genearting Thumbnail
+
 The following example illustrates the usage of Thumbnail package
 ```php
 <?php 
@@ -173,4 +175,5 @@ Thumbnail::getThumbnail($video_path,$thumbnail_path,$thumbnail_image,160,128,$ti
 ```
 ----
 >### LICENSE
+
 [MIT](https://opensource.org/licenses/MIT)
