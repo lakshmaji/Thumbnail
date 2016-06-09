@@ -14,7 +14,7 @@
 
 This package relays on [FFMpeg](https://en.wikipedia.org/wiki/FFmpeg), A complete, cross-platform solution to record, convert and stream audio and video i.e, Multimedia .
 
-####Installing on Ubuntu
+####Installing FFMpeg on Ubuntu
 
 - Add the mc3man ppa
 
@@ -34,6 +34,15 @@ This package relays on [FFMpeg](https://en.wikipedia.org/wiki/FFmpeg), A complet
 ```terminal
 	sudo apt-get install ffmpeg
 ```
+
+
+####Installing FFMpeg on Windows
+
+ Refer to the following links
+ 
+ [WikiHow](http://www.wikihow.com/Install-FFmpeg-on-Windows) 
+
+ [AdapticeSolutions](http://adaptivesamples.com/how-to-install-ffmpeg-on-windows/)
 
         
 ---
