@@ -7,7 +7,7 @@
 >### INDEX
 
 |Index|Description|
-|---|---:|
+|---|---|
 |[What it is](https://github.com/lakshmajim/Thumbnail#what-it-is) |- Introduction|
 |[Installing FFMpeg](https://github.com/lakshmajim/Thumbnail#installing-dependency-software) |- Installing dependency software|
 |[Installation](https://github.com/lakshmajim/Thumbnail#installation) |- Installing Thumbnail package, Lararavel Integration|
