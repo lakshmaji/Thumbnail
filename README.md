@@ -1,5 +1,23 @@
 # Thumbnail
 
+
+
+[Wiki on web](http://lakshmajim.github.io/Thumbnail/)
+
+>### INDEX
+
+|Index|Description|
+|---|---:|
+|[What it is](https://github.com/lakshmajim/Thumbnail#what-it-is) |- Introduction|
+|[Installing FFMpeg](https://github.com/lakshmajim/Thumbnail#installing-dependency-software) |- Installing dependency software|
+|[Installation](https://github.com/lakshmajim/Thumbnail#installation) |- Installing Thumbnail package, Lararavel Integration|
+|[Docs](https://github.com/lakshmajim/Thumbnail#method)|- Methods and Description|
+|[Generating Thumbnail](https://github.com/lakshmajim/Thumbnail#genearting-thumbnail) |- Generateing thumbnail image with this package|
+|[Miscellaneous](https://github.com/lakshmajim/Thumbnail#miscellaneous) |- Miscellaneous content regarding method calls|
+|[Twilio](https://github.com/lakshmajim/Thumbnail#license) |- License Information|
+
+
+
 >### What it is
 
  - Generates Thumbnail (image) for a given video 
