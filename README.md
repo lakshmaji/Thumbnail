@@ -65,6 +65,7 @@ Lakshmajim\Thumbnail\ThumbnailServiceProvider::class,
     composer update
     ```
 ---
+
 >### Genearting Thumbnail
 
 The following example illustrates the usage of Thumbnail package
