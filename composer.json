@@ -2,7 +2,7 @@
     "name": "lakshmajim/thumbnail",
     "description": "Thumbnails for videos",
     "keywords": [
-        "Thumbnails", "Laravel", "composer", "video", "FFMpeg","screenshot"."thumbnail"
+        "Thumbnails", "Laravel", "composer", "video", "FFMpeg","screenshot","thumbnail"
     ],
     "license": "MIT",
     "authors": [
