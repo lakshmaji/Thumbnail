@@ -37,6 +37,50 @@
 
 <blockquote>
 <h3>
+<a id="index" class="anchor" href="#index" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>INDEX</h3>
+</blockquote>
+
+<table>
+<thead>
+<tr>
+<th>Index</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/lakshmajim/Thumbnail#what-it-is">What it is</a></td>
+<td>- Introduction</td>
+</tr>
+<tr>
+<td><a href="https://github.com/lakshmajim/Thumbnail#installing-dependency-software">Installing FFMpeg</a></td>
+<td>- Installing dependency software</td>
+</tr>
+<tr>
+<td><a href="https://github.com/lakshmajim/Thumbnail#installation">Installation</a></td>
+<td>- Installing Thumbnail package, Lararavel Integration</td>
+</tr>
+<tr>
+<td><a href="https://github.com/lakshmajim/Thumbnail#method">Docs</a></td>
+<td>- Methods and Description</td>
+</tr>
+<tr>
+<td><a href="https://github.com/lakshmajim/Thumbnail#genearting-thumbnail">Generating Thumbnail</a></td>
+<td>- Generateing thumbnail image with this package</td>
+</tr>
+<tr>
+<td><a href="https://github.com/lakshmajim/Thumbnail#miscellaneous">Miscellaneous</a></td>
+<td>- Miscellaneous content regarding method calls</td>
+</tr>
+<tr>
+<td><a href="https://github.com/lakshmajim/Thumbnail#license">Twilio</a></td>
+<td>- License Information</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<h3>
 <a id="what-it-is" class="anchor" href="#what-it-is" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What it is</h3>
 </blockquote>
 
@@ -65,24 +109,93 @@
 <a id="installing-ffmpeg-on-ubuntu" class="anchor" href="#installing-ffmpeg-on-ubuntu" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installing FFMpeg on Ubuntu</h4>
 
 <ul>
-<li>Add the mc3man ppa</li>
-</ul>
+<li>
+<p>Add the mc3man ppa</p>
 
-<div class="highlight highlight-source-shell"><pre>    sudo add-apt-repository ppa:mc3man/trusty-media</pre></div>
+<div class="highlight highlight-source-shell"><pre>sudo add-apt-repository ppa:mc3man/trusty-media</pre></div>
+</li>
+<li>
+<p>Run following command to Update the package list. </p>
 
-<ul>
-<li>Run following command to Update the package list. </li>
-</ul>
+<div class="highlight highlight-source-shell"><pre>sudo apt-get update
+sudo apt-get update sudo apt-get dist-upgrade</pre></div>
+</li>
+<li>
+<p>Now FFmpeg is available to be installed with <strong>apt</strong> , Run this command</p>
 
-<div class="highlight highlight-source-shell"><pre>    sudo apt-get update
-    sudo apt-get update sudo apt-get dist-upgrade</pre></div>
-
-<ul>
-<li>Now FFmpeg is available to be installed with <strong>apt</strong> , Run this command</li>
-</ul>
-
-<pre lang="terminal"><code>    sudo apt-get install ffmpeg
+<pre lang="terminal"><code>sudo apt-get install ffmpeg
 </code></pre>
+</li>
+</ul>
+
+<h4>
+<a id="installing-ffmpeg-on-centos" class="anchor" href="#installing-ffmpeg-on-centos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installing FFMpeg on CentOS</h4>
+
+<ul>
+<li>
+<p>Enable EPEL repository </p>
+
+<ul>
+<li>
+<p>for centos 6</p>
+
+<div class="highlight highlight-source-shell"><pre>  rpm -Uvh http://mirrors.kernel.org/fedora-epel/6/i386/epel-release-6-8.noarch.rpm</pre></div>
+</li>
+<li>
+<p>for centos 5</p>
+
+<div class="highlight highlight-source-shell"><pre>  rpm -Uvh http://mirrors.kernel.org/fedora-epel/5/i386/epel-release-5-4.noarch.rpm</pre></div>
+</li>
+<li>
+<p>for centos 7</p>
+
+<div class="highlight highlight-source-shell"><pre>  yum install epel-release</pre></div>
+</li>
+</ul>
+</li>
+<li>
+<p>Check whether EPEL respository is eabled by the following command</p>
+
+<div class="highlight highlight-source-vbnet"><pre>   yum repolist</pre></div>
+</li>
+<li>
+<p>Import the official GPG key of Nux Dextop repository:</p>
+
+<div class="highlight highlight-source-shell"><pre>   rpm --import http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro</pre></div>
+</li>
+</ul>
+
+<h5>
+<a id="nux-dextop-is-a-third-party-rpm-repository-which-contains-many-popular-desktop-and-multimedia-related-packages-eg-ardour-shutter-etc-for-centos-rhel-and-scientificlinux-currently-nux-dextop-repository-is-available-for-centosrhel-6-and-7" class="anchor" href="#nux-dextop-is-a-third-party-rpm-repository-which-contains-many-popular-desktop-and-multimedia-related-packages-eg-ardour-shutter-etc-for-centos-rhel-and-scientificlinux-currently-nux-dextop-repository-is-available-for-centosrhel-6-and-7" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Nux Dextop is a third-party RPM repository which contains many popular desktop and multimedia related packages (e.g., Ardour, Shutter, etc) for CentOS, RHEL and ScientificLinux. Currently, Nux Dextop repository is available for CentOS/RHEL 6 and 7.</h5>
+
+<ul>
+<li>
+<p>Install Nux Dextop with yum command as follows.</p>
+
+<ul>
+<li>
+<p>centos 6</p>
+
+<div class="highlight highlight-source-shell"><pre>rpm -Uvh http://li.nux.ro/download/nux/dextop/el6/x86_64/nux-dextop-release-0-2.el6.nux.noarch.rpm</pre></div>
+</li>
+<li>
+<p>centos 7</p>
+
+<div class="highlight highlight-source-shell"><pre>rpm -Uvh http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-1.el7.nux.noarch.rpm</pre></div>
+</li>
+</ul>
+</li>
+<li>
+<p>Now verify that Nux Dextop repository is successfully installed:</p>
+
+<div class="highlight highlight-source-shell"><pre>   yum repolist</pre></div>
+</li>
+<li>
+<p>Run following command to install FFMpeg</p>
+
+<div class="highlight highlight-source-shell"><pre>   yum install ffmpeg</pre></div>
+</li>
+</ul>
 
 <h4>
 <a id="installing-ffmpeg-on-windows" class="anchor" href="#installing-ffmpeg-on-windows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installing FFMpeg on Windows</h4>
