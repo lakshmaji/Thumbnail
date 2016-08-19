@@ -53,6 +53,65 @@ This package relays on [FFMpeg](https://en.wikipedia.org/wiki/FFmpeg), A complet
 	sudo apt-get install ffmpeg
 ```
 
+####Installing FFMpeg on CentOS 
+- Enable EPEL repository 
+   - for centos 6
+     
+     ```bash
+        rpm -Uvh http://mirrors.kernel.org/fedora-epel/6/i386/epel-release-6-8.noarch.rpm
+     ```
+   - for centos 5
+     
+     ```bash
+        rpm -Uvh http://mirrors.kernel.org/fedora-epel/5/i386/epel-release-5-4.noarch.rpm
+     ```
+   - for centos 7
+     
+     ```bash
+        yum install epel-release
+     ```
+
+- Check whether EPEL respository is eabled by the following command
+
+  ```bas
+     yum repolist
+  ```
+
+- Import the official GPG key of Nux Dextop repository:
+
+  ```bash
+     rpm --import http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro
+  ```
+   
+   
+#####Nux Dextop is a third-party RPM repository which contains many popular desktop and multimedia related packages (e.g., Ardour, Shutter, etc) for CentOS, RHEL and ScientificLinux. Currently, Nux Dextop repository is available for CentOS/RHEL 6 and 7.
+   
+   
+- Install Nux Dextop with yum command as follows.
+    - centos 6
+    
+      ```bash
+      rpm -Uvh http://li.nux.ro/download/nux/dextop/el6/x86_64/nux-dextop-release-0-2.el6.nux.noarch.rpm
+      ```
+    - centos 7
+    
+      ```bash
+      rpm -Uvh http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-1.el7.nux.noarch.rpm
+      ```
+    
+- Now verify that Nux Dextop repository is successfully installed:
+    
+    ```bash
+       yum repolist
+    ```
+    
+- Run following command to install FFMpeg
+    
+    ```bash
+       yum install ffmpeg
+    ```
+    
+    
 
 ####Installing FFMpeg on Windows
 
