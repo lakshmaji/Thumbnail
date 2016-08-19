@@ -36,22 +36,22 @@ This package relays on [FFMpeg](https://en.wikipedia.org/wiki/FFmpeg), A complet
 
 - Add the mc3man ppa
 
-```bash
-    sudo add-apt-repository ppa:mc3man/trusty-media
-```
+  ```bash
+  sudo add-apt-repository ppa:mc3man/trusty-media
+  ```
         
 - Run following command to Update the package list. 
 
-```bash
-    sudo apt-get update
-    sudo apt-get update sudo apt-get dist-upgrade
-```
+  ```bash
+  sudo apt-get update
+  sudo apt-get update sudo apt-get dist-upgrade
+  ```
         
 - Now FFmpeg is available to be installed with **apt** , Run this command
 
-```terminal
-	sudo apt-get install ffmpeg
-```
+  ```terminal
+  sudo apt-get install ffmpeg
+  ```
 
 ####Installing FFMpeg on CentOS 
 - Enable EPEL repository 
