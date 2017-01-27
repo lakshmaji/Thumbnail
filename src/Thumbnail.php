@@ -21,7 +21,7 @@ use FFMpeg\Coordinate;
  *
  * @author     lakshmaji 
  * @package    Thumbnail
- * @version    1.3.0
+ * @version    1.4.0
  * @since      Class available since Release 1.0.0
  */
 class Thumbnail

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Facade;
  *
  * @author     lakshmaji 
  * @package    Thumbnail
- * @version    1.0.0
+ * @version    1.4.0
  * @since      Class available since Release 1.0.0
  */ 
 class Thumbnail extends Facade {
