@@ -21,7 +21,7 @@ use FFMpeg\Coordinate;
  *
  * @author     lakshmaji 
  * @package    Thumbnail
- * @version    1.4.0
+ * @version    1.4.1
  * @since      Class available since Release 1.0.0
  */
 class Thumbnail
@@ -101,6 +101,35 @@ class Thumbnail
             // error processing request
             echo "Got Bad Cookie";
         }
+    }
+
+    //-------------------------------------------------------------------------
+
+
+    /**
+     * Clips the given video
+     *
+     * Create a new clipped video from the given video
+     *
+     *  
+     * @access public
+     * @since  Method available since Release 1.4.1
+     * @param  src        Video resource source path 
+     * @param  dest       Video resource destination path
+     * @author lakshmajim 
+     * @return boolean 
+     */
+    public function clip($src, $dest)
+    {
+        $ffmpeg = FFMpeg::create();
+        $video  = $ffmpeg->open($src);
+
+        $video
+            ->filters()
+            ->clip(Coordinate\TimeCode::fromSeconds(30), Coordinate\TimeCode::fromSeconds(15));
+
+        $video
+            ->save(new Format\Video\WebM(), $dest);
     }
 
     //-------------------------------------------------------------------------

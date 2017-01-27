@@ -15,7 +15,7 @@ use Illuminate\Support\ServiceProvider;
  *
  * @author     lakshmaji 
  * @package    Thumbnail
- * @version    1.4.0
+ * @version    1.4.1
  * @since      Class available since Release 1.0.0
  */
 class ThumbnailServiceProvider extends ServiceProvider
