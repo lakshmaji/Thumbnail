@@ -37,10 +37,6 @@ class ThumbnailServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app['thumbnail'] = $this->app->share(function($app) {
-            return new Thumbnail;
-        });
-
         $this->app->singleton('thumbnail', function($app) {
             return new Thumbnail;
         });
