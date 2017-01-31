@@ -1,7 +1,9 @@
 <?php 
 
+// Define namespace
 namespace Lakshmajim\Thumbnail;
 
+// Include namespace
 use Illuminate\Support\ServiceProvider;
 
 
@@ -15,7 +17,7 @@ use Illuminate\Support\ServiceProvider;
  *
  * @author     lakshmaji 
  * @package    Thumbnail
- * @version    1.4.1
+ * @version    1.4.2
  * @since      Class available since Release 1.0.0
  */
 class ThumbnailServiceProvider extends ServiceProvider
@@ -33,15 +35,25 @@ class ThumbnailServiceProvider extends ServiceProvider
     /**
      * Register the application services.
      *
-     * @return void
+     * @return  void
+     * @author  lakshmaji 
+     * @package Thumbnail
+     * @version 1.4.2
+     * @since   Method available since Release 1.0.0
      */
     public function register()
     {
-        $this->app->singleton('thumbnail', function($app) {
-            return new Thumbnail;
-        });
+        if (method_exists(\Illuminate\Foundation\Application::class, 'singleton')) {
+            $this->app->singleton('thumbnail', function($app) {
+                return new Thumbnail;
+            });
+        } else {
+            $this->app['thumbnail'] = $this->app->share(function($app) {
+                return new Thumbnail;
+            });
+        }
     }
 }
 // end of ThumbnailServiceProvider class
-// end of file ThumbnailServiceProvider 
+// end of file ThumbnailServiceProvider.php 
 
