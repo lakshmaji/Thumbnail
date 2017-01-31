@@ -1,5 +1,8 @@
-<?php namespace Lakshmajim\Thumbnail\Facade;
- 
+<?php 
+
+namespace Lakshmajim\Thumbnail\Facade;
+
+// Inlcude namespace 
 use Illuminate\Support\Facades\Facade;
  
 /**
@@ -7,7 +10,7 @@ use Illuminate\Support\Facades\Facade;
  *
  * @author     lakshmaji 
  * @package    Thumbnail
- * @version    1.4.1
+ * @version    1.4.2
  * @since      Class available since Release 1.0.0
  */ 
 class Thumbnail extends Facade {
