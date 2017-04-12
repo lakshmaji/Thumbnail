@@ -12,9 +12,9 @@
 |[Installing FFMpeg](https://github.com/lakshmajim/Thumbnail#installing-dependency-software) |- Installing dependency software|
 |[Installation](https://github.com/lakshmajim/Thumbnail#installation) |- Installing Thumbnail package, Lararavel Integration|
 |[Docs](https://github.com/lakshmajim/Thumbnail#method)|- Methods and Description|
-|[Generating Thumbnail](https://github.com/lakshmajim/Thumbnail#genearting-thumbnail) |- Generateing thumbnail image with this package|
+|[Generating Thumbnail](https://github.com/lakshmajim/Thumbnail#genearting-thumbnail) |- Generating thumbnail image with this package|
 |[Miscellaneous](https://github.com/lakshmajim/Thumbnail#miscellaneous) |- Miscellaneous content regarding method calls|
-|[Twilio](https://github.com/lakshmajim/Thumbnail#license) |- License Information|
+|[License](https://github.com/lakshmajim/Thumbnail#license) |- License Information|
 
 
 
