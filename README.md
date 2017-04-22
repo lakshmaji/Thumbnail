@@ -2,19 +2,19 @@
 
 
 
-[Wiki on web](http://lakshmajim.github.io/Thumbnail/)
+[Wiki on web](http://lakshmaji.github.io/Thumbnail/)
 
 >### INDEX
 
 |Index|Description|
 |---|---|
-|[What it is](https://github.com/lakshmajim/Thumbnail#what-it-is) |- Introduction|
-|[Installing FFMpeg](https://github.com/lakshmajim/Thumbnail#installing-dependency-software) |- Installing dependency software|
-|[Installation](https://github.com/lakshmajim/Thumbnail#installation) |- Installing Thumbnail package, Lararavel Integration|
-|[Docs](https://github.com/lakshmajim/Thumbnail#method)|- Methods and Description|
-|[Generating Thumbnail](https://github.com/lakshmajim/Thumbnail#genearting-thumbnail) |- Generating thumbnail image with this package|
-|[Miscellaneous](https://github.com/lakshmajim/Thumbnail#miscellaneous) |- Miscellaneous content regarding method calls|
-|[License](https://github.com/lakshmajim/Thumbnail#license) |- License Information|
+|[What it is](https://github.com/lakshmaji/Thumbnail#what-it-is) |- Introduction|
+|[Installing FFMpeg](https://github.com/lakshmaji/Thumbnail#installing-dependency-software) |- Installing dependency software|
+|[Installation](https://github.com/lakshmaji/Thumbnail#installation) |- Installing Thumbnail package, Lararavel Integration|
+|[Docs](https://github.com/lakshmaji/Thumbnail#method)|- Methods and Description|
+|[Generating Thumbnail](https://github.com/lakshmaji/Thumbnail#genearting-thumbnail) |- Generating thumbnail image with this package|
+|[Miscellaneous](https://github.com/lakshmaji/Thumbnail#miscellaneous) |- Miscellaneous content regarding method calls|
+|[License](https://github.com/lakshmaji/Thumbnail#license) |- License Information|
 
 
 
@@ -138,15 +138,15 @@ This package relays on [FFMpeg](https://en.wikipedia.org/wiki/FFmpeg), A complet
 
 - This package is available on packagist
 ```bash
-    composer require lakshmajim/thumbnail
+    composer require lakshmaji/thumbnail
 ```
 - Add the Service Provider to **providers** array
 ```php
-Lakshmajim\Thumbnail\ThumbnailServiceProvider::class,
+Lakshmaji\Thumbnail\ThumbnailServiceProvider::class,
 ```
 - Add the Facade to **aliases** array
 ```php
-'Thumbnail' => Lakshmajim\Thumbnail\Facade\Thumbnail::class,
+'Thumbnail' => Lakshmaji\Thumbnail\Facade\Thumbnail::class,
 ```
 - Try updating the application with composer (dependencies)
     ```bash
@@ -177,7 +177,7 @@ use Trending\Http\Controllers\Controller;
  *
  * @since    1.0.0
  * @version  1.0.0
- * @author   lakshmajim 
+ * @author   lakshmaji 
  */
 class ThumbnailTest extends AnotherClass
 {

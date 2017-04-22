@@ -7,7 +7,7 @@
 |
 */
 
-namespace Lakshmajim\Thumbnail;
+namespace Lakshmaji\Thumbnail;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;

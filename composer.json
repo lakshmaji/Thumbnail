@@ -1,5 +1,5 @@
 {
-    "name": "lakshmajim/thumbnail",
+    "name": "lakshmaji/thumbnail",
     "description": "Thumbnails for videos",
     "keywords": [
         "Thumbnails", "Laravel", "composer", "video", "FFMpeg","screenshot","thumbnail"
@@ -7,7 +7,7 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "lakshmajim",
+            "name": "lakshmaji",
             "email": ""
         }
     ],
@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Lakshmajim\\Thumbnail\\": "src/"
+            "Lakshmaji\\Thumbnail\\": "src/"
         }
     },
     "minimum-stability": "dev"
