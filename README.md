@@ -1,6 +1,12 @@
 # Thumbnail
 
-
+[![Latest Stable Version](https://poser.pugx.org/lakshmajim/thumbnail/v/stable)](https://packagist.org/packages/lakshmajim/thumbnail)
+[![Total Downloads](https://poser.pugx.org/lakshmajim/thumbnail/downloads)](https://packagist.org/packages/lakshmajim/thumbnail)
+[![Latest Unstable Version](https://poser.pugx.org/lakshmajim/thumbnail/v/unstable)](https://packagist.org/packages/lakshmajim/thumbnail)
+[![License](https://poser.pugx.org/lakshmajim/thumbnail/license)](https://packagist.org/packages/lakshmajim/thumbnail)
+[![Monthly Downloads](https://poser.pugx.org/lakshmajim/thumbnail/d/monthly)](https://packagist.org/packages/lakshmajim/thumbnail)
+[![Daily Downloads](https://poser.pugx.org/lakshmajim/thumbnail/d/daily)](https://packagist.org/packages/lakshmajim/thumbnail)
+[![composer.lock](https://poser.pugx.org/lakshmajim/thumbnail/composerlock)](https://packagist.org/packages/lakshmajim/thumbnail)
 
 [Wiki on web](http://lakshmaji.github.io/Thumbnail/)
 
