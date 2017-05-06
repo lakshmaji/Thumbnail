@@ -49,7 +49,16 @@
 
 This package relays on [FFMpeg](https://en.wikipedia.org/wiki/FFmpeg), A complete, cross-platform solution to record, convert and stream audio and video i.e, Multimedia .
 
-####Installing FFMpeg on Ubuntu
+#### Installing FFMpeg on  16.04 (Xenial Xerus) LTS
+
+- Run following command to install FFMpeg
+
+  ```bash
+  sudo apt-get update
+  sudo apt-get install ffmpeg
+  ```
+
+#### Installing FFMpeg on Ubuntu 14.04  LTS
 
 - Add the mc3man ppa
 
@@ -70,7 +79,7 @@ This package relays on [FFMpeg](https://en.wikipedia.org/wiki/FFmpeg), A complet
   sudo apt-get install ffmpeg
   ```
 
-####Installing FFMpeg on CentOS 
+#### Installing FFMpeg on CentOS 
 - Enable EPEL repository 
    - for centos 6
      
@@ -101,7 +110,7 @@ This package relays on [FFMpeg](https://en.wikipedia.org/wiki/FFmpeg), A complet
   ```
    
    
-#####Nux Dextop is a third-party RPM repository which contains many popular desktop and multimedia related packages (e.g., Ardour, Shutter, etc) for CentOS, RHEL and ScientificLinux. Currently, Nux Dextop repository is available for CentOS/RHEL 6 and 7.
+##### Nux Dextop is a third-party RPM repository which contains many popular desktop and multimedia related packages (e.g., Ardour, Shutter, etc) for CentOS, RHEL and ScientificLinux. Currently, Nux Dextop repository is available for CentOS/RHEL 6 and 7.
    
    
 - Install Nux Dextop with yum command as follows.
@@ -130,7 +139,7 @@ This package relays on [FFMpeg](https://en.wikipedia.org/wiki/FFmpeg), A complet
     
     
 
-####Installing FFMpeg on Windows
+#### Installing FFMpeg on Windows
 
  Refer to the following links
  
@@ -163,7 +172,9 @@ Lakshmaji\Thumbnail\ThumbnailServiceProvider::class,
 >### Genearting Thumbnail
 
 The following example illustrates the usage of Thumbnail package
+
 ```php
+
 <?php 
 
 namespace Trending\Http\Controllers\File;
@@ -187,56 +198,56 @@ use Trending\Http\Controllers\Controller;
  */
 class ThumbnailTest extends AnotherClass
 {
-	public function testThumbnail()
-	{
-		// get file from input data
-		$file             = $this->request->file('file');
+  public function testThumbnail()
+  {
+    // get file from input data
+    $file             = $this->request->file('file');
 
-		// get file type
-		$extension_type   = $file->getClientMimeType();
-		
-		// set storage path to store the file (actual video)
-		$destination_path = storage_path().'/uploads';
+    // get file type
+    $extension_type   = $file->getClientMimeType();
+    
+    // set storage path to store the file (actual video)
+    $destination_path = storage_path().'/uploads';
 
-		// get file extension
-		$extension        = $file->getClientOriginalExtension();
-
-
-		$timestamp        = str_replace([' ', ':'], '-', Carbon::now()->toDateTimeString());
-		$file_name        = $timestamp;
-		
-		$upload_status    = $file->move($destination_path, $file_name);	        
-
-		if($upload_status)
-		{
-			// file type is video
-			// set storage path to store the file (image generated for a given video)
-			$thumbnail_path   = storage_path().'/images';
-
-			$video_path       = $destination_path.'/'.$file_name;
-
-			// set thumbnail image name
-			$thumbnail_image  = $fb_user_id.".".$timestamp.".jpg";
-			
-			// set the thumbnail image "palyback" video button
-			$water_mark       = storage_path().'/watermark/p.png';
-
-			// get video length and process it
-			// assign the value to time_to_image (which will get screenshot of video at that specified seconds)
-			$time_to_image    = floor(($data['video_length'])/2);
+    // get file extension
+    $extension        = $file->getClientOriginalExtension();
 
 
-			$thumbnail_status = Thumbnail::getThumbnail($video_path,$thumbnail_path,$thumbnail_image,160,128,$time_to_image,$water_mark,true);		
-			if($thumbnail_status)
-			{
-				echo "Thumbnail generated";
-			}
-			else
-			{
-				echo "thumbnail generation has failed";
-			}
-		}
-	}
+    $timestamp        = str_replace([' ', ':'], '-', Carbon::now()->toDateTimeString());
+    $file_name        = $timestamp;
+    
+    $upload_status    = $file->move($destination_path, $file_name);         
+
+    if($upload_status)
+    {
+      // file type is video
+      // set storage path to store the file (image generated for a given video)
+      $thumbnail_path   = storage_path().'/images';
+
+      $video_path       = $destination_path.'/'.$file_name;
+
+      // set thumbnail image name
+      $thumbnail_image  = $fb_user_id.".".$timestamp.".jpg";
+      
+      // set the thumbnail image "palyback" video button
+      $water_mark       = storage_path().'/watermark/p.png';
+
+      // get video length and process it
+      // assign the value to time_to_image (which will get screenshot of video at that specified seconds)
+      $time_to_image    = floor(($data['video_length'])/2);
+
+
+      $thumbnail_status = Thumbnail::getThumbnail($video_path,$thumbnail_path,$thumbnail_image,160,128,$time_to_image,$water_mark,true);    
+      if($thumbnail_status)
+      {
+        echo "Thumbnail generated";
+      }
+      else
+      {
+        echo "thumbnail generation has failed";
+      }
+    }
+  }
 }
 // end of class ThumbnailTest
 // end of file ThumbnailTest.php  
