@@ -17,15 +17,21 @@ use Illuminate\Support\ServiceProvider;
  *
  * @author     lakshmaji 
  * @package    Thumbnail
- * @version    1.4.2
+ * @version    1.4.4
  * @since      Class available since Release 1.0.0
  */
 class ThumbnailServiceProvider extends ServiceProvider
 {
+
     /**
      * Bootstrap the application services.
+     * Publishes config file 
      *
-     * @return void
+     * @package Thumbnail
+     * @return  void
+     * @author  lakshmaji 
+     * @version 1.4.4
+     * @since   Method available since Release 1.0.0
      */
     public function boot()
     {
@@ -35,13 +41,16 @@ class ThumbnailServiceProvider extends ServiceProvider
         ]);
     }
 
+    //-------------------------------------------------------------------------
+
+
     /**
      * Register the application services.
      *
      * @return  void
      * @author  lakshmaji 
      * @package Thumbnail
-     * @version 1.4.2
+     * @version 1.4.4
      * @since   Method available since Release 1.0.0
      */
     public function register()
@@ -56,6 +65,9 @@ class ThumbnailServiceProvider extends ServiceProvider
             });
         }
     }
+
+    //-------------------------------------------------------------------------
+
 }
 // end of ThumbnailServiceProvider class
 // end of file ThumbnailServiceProvider.php 

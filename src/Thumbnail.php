@@ -22,7 +22,7 @@ use Illuminate\Http\Request;
  *
  * @author     lakshmaji 
  * @package    Thumbnail
- * @version    1.4.3
+ * @version    1.4.4
  * @since      Class available since Release 1.0.0
  */
 class Thumbnail
@@ -44,7 +44,7 @@ class Thumbnail
      * @return boolean 
      *
      * @since   Method available since Release 1.0.0
-     * @version 1.4.3
+     * @version 1.4.4
      * @author  lakshmajim 
      */
     public function getThumbnail($video_path,$storage_path,$thumnail_name,$tts=10)
@@ -127,8 +127,8 @@ class Thumbnail
      * @param  to         Clipping end time
      * @return boolean 
      *
-     * @since   Method available since Release 1.4.1
-     * @version 1.4.3
+     * @since   Method available since Release 1.4.4
+     * @version 1.4.4
      * @author  lakshmajim 
      */
     public function clipWebM($src, $dest, $from, $to)
@@ -163,8 +163,8 @@ class Thumbnail
      * @param  dest       Video resource destination path
      * @return boolean 
      *
-     * @since   Method available since Release 1.4.3
-     * @version 1.4.3
+     * @since   Method available since Release 1.4.4
+     * @version 1.4.4
      * @author  lakshmajim 
      */
     public function watermarkVideo($src, $dest)
