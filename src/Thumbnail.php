@@ -9,10 +9,12 @@
 
 namespace Lakshmaji\Thumbnail;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
+use Exception;
 use FFMpeg\FFMpeg;
 use FFMpeg\Coordinate;
+use App\Http\Requests;
+use FFMpeg\Format\Video;
+use Illuminate\Http\Request;
 
 
 /**
@@ -20,7 +22,7 @@ use FFMpeg\Coordinate;
  *
  * @author     lakshmaji 
  * @package    Thumbnail
- * @version    1.4.2
+ * @version    1.4.3
  * @since      Class available since Release 1.0.0
  */
 class Thumbnail
@@ -35,16 +37,19 @@ class Thumbnail
      *
      *  
      * @access public
-     * @since  Method available since Release 1.0.0
      * @param  video_path      Video resource source path 
      * @param  storage_path    Image resource destination path
      * @param  thumbnail_name  Image name for output
-     * @param  tts             Time to take screenshot                 [optional]
-     * @author lakshmajim 
+     * @param  tts             Time to take screenshot          [optional]
      * @return boolean 
+     *
+     * @since   Method available since Release 1.0.0
+     * @version 1.4.3
+     * @author  lakshmajim 
      */
-    public function getThumbnail($video_path, $storage_path, $thumnail_name, $tts=50)
+    public function getThumbnail($video_path,$storage_path,$thumnail_name,$tts=10)
     {
+
         try {
             if(config('thumbnail.binaries.enabled')) {
                 $ffmpeg = FFMpeg\FFMpeg::create(
@@ -72,8 +77,8 @@ class Thumbnail
                 ->save($result_image);
 
             if($video) {
-                if(config('thumbnail.watermark.enabled')) {
-                    $src       = imagecreatefrompng(config('thumbnail.watermark.path'));
+                if(config('thumbnail.watermark.image.enabled')) {
+                    $src       = imagecreatefrompng(config('thumbnail.watermark.image.path'));
                     $got_image = imagecreatefromjpeg($result_image);
             
                     // Get dimensions of image screen shot
@@ -101,7 +106,7 @@ class Thumbnail
             }
         } catch(Exception $thumbnailException) {
             // error processing request
-            echo "Got Bad Cookie";
+            throw new Exception("Got bad cookie");            
         }
     }
 
@@ -111,31 +116,83 @@ class Thumbnail
     /**
      * Clips the given video
      *
-     * Create a new clipped video from the given video
-     *
-     *  
+     * Create a new clipped video of type WebM
+     * from the given video
+     * 
+     * 
      * @access public
-     * @since  Method available since Release 1.4.1
      * @param  src        Video resource source path 
      * @param  dest       Video resource destination path
-     * @author lakshmajim 
+     * @param  from       Clipping start time
+     * @param  to         Clipping end time
      * @return boolean 
+     *
+     * @since   Method available since Release 1.4.1
+     * @version 1.4.3
+     * @author  lakshmajim 
      */
-    public function clip($src, $dest)
+    public function clipWebM($src, $dest, $from, $to)
     {
         $ffmpeg = FFMpeg::create();
         $video  = $ffmpeg->open($src);
 
+        if($from >= $to) 
+            throw new Exception("The start clipping time must be less than end clipping time");
+            
         $video
             ->filters()
-            ->clip(Coordinate\TimeCode::fromSeconds(30), Coordinate\TimeCode::fromSeconds(15));
+            ->clip(Coordinate\TimeCode::fromSeconds($from), Coordinate\TimeCode::fromSeconds($to));
 
         $video
-            ->save(new Format\Video\WebM(), $dest);
+            ->save(new Video\WebM(), $dest);
+
+        if($video) return true;
+        else return false;
     }
 
     //-------------------------------------------------------------------------
 
+
+    /**
+     * Insert watermark on the given video
+     *
+     * 
+     * 
+     * @access public
+     * @param  src        Video resource source path 
+     * @param  dest       Video resource destination path
+     * @return boolean 
+     *
+     * @since   Method available since Release 1.4.3
+     * @version 1.4.3
+     * @author  lakshmajim 
+     */
+    public function watermarkVideo($src, $dest)
+    {
+        $ffmpeg = FFMpeg::create();
+        $video  = $ffmpeg->open($src);
+
+        if(!config('thumbnail.watermark.video.enabled')) 
+            throw new Exception("Configure watermark path in env file");
+            
+        // $video->filters()->resize($dimension, $mode, $useStandards);
+        $video
+            ->filters()
+            ->watermark(config('thumbnail.watermark.video.path'), array(
+                'position' => 'relative',
+                'bottom' => 50,
+                'right' => 50,
+            ));
+
+
+        $video
+            ->save(new Video\WebM(), $dest);        
+
+        if($video) return true;
+        else return false;
+    }
+
+    //-------------------------------------------------------------------------
 }
 // //end of Thumbnail class
 // // end of file Thumbnail.php
