@@ -30,6 +30,9 @@ class ThumbnailServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        $this->publishes([
+            __DIR__.'/config/thumbnail.php' => config_path('thumbnail.php'),
+        ]);
     }
 
     /**

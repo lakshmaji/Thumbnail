@@ -169,6 +169,19 @@ Lakshmaji\Thumbnail\ThumbnailServiceProvider::class,
     ```
 ---
 
+
+---
+>### Configurations
+
+- Publish the configuration file 
+```bash
+    php artisan vendor:publish
+```
+- Configure the required FFMpeg configurations 
+---
+
+
+
 >### Genearting Thumbnail
 
 The following example illustrates the usage of Thumbnail package

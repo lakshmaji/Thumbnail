@@ -39,27 +39,21 @@ class Thumbnail
      * @param  video_path      Video resource source path 
      * @param  storage_path    Image resource destination path
      * @param  thumbnail_name  Image name for output
-     * @param  height                                                  [optional]
-     * @param  width                                                   [optional]
      * @param  tts             Time to take screenshot                 [optional]
-     * @param  water_mark      Thmbnail paly button image              [optional]
-     * @param  wm              if true the only it inserts play button [optional]
      * @author lakshmajim 
      * @return boolean 
      */
-    public function getThumbnail($video_path,$storage_path,$thumnail_name,$height=320,$width=240,$tts=50,$water_mark='',$wm=false)
+    public function getThumbnail($video_path, $storage_path, $thumnail_name, $tts=50)
     {
-        try
-        {
-            if(!empty(getenv('FFMPEG_PATH')))
-            {
-                $ffmpeg   = FFMpeg::create(
-                    [
-                        'ffmpeg.binaries'  => getenv('FFMPEG_PATH').'/ffmpeg',
-                        'ffprobe.binaries' => getenv('FFMPEG_PATH').'/ffprobe',
-                        'timeout'          => 3600, // The timeout for the underlying process
-                        'ffmpeg.threads'   => 12,   // The number of threads that FFMpeg should use
-                    ]
+        try {
+            if(config('thumbnail.binaries.enabled')) {
+                $ffmpeg = FFMpeg\FFMpeg::create(
+                    array(
+                        'ffmpeg.binaries'  => config('thumbnail.binaries.path.ffmpeg'),
+                        'ffprobe.binaries' => config('thumbnail.binaries.path.ffprobe'),
+                        'timeout'          => config('thumbnail.binaries.path.timeout'),
+                        'ffmpeg.threads'   => config('thumbnail.binaries.path.threads'),
+                    )
                 );
             } 
             else {
@@ -71,17 +65,15 @@ class Thumbnail
 
             $video
                 ->filters()
-                ->resize(new Coordinate\Dimension($height, $width)) 
+                ->resize(new Coordinate\Dimension(config('thumbnail.dimensions.height'), config('thumbnail.dimensions.width'))) 
                 ->synchronize();//320, 240
             $video
                 ->frame(Coordinate\TimeCode::fromSeconds($tts))
                 ->save($result_image);
 
-            if($video)
-            {
-                if($wm)
-                {
-                    $src       = imagecreatefrompng($water_mark);
+            if($video) {
+                if(config('thumbnail.watermark.enabled')) {
+                    $src       = imagecreatefrompng(config('thumbnail.watermark.path'));
                     $got_image = imagecreatefromjpeg($result_image);
             
                     // Get dimensions of image screen shot
@@ -89,8 +81,8 @@ class Thumbnail
                     $height    = imagesy($got_image);
 
                     // final output image dimensions
-                    $newwidth  = env('THUMBNAIL_IMAGE_WIDTH');   
-                    $newheight = env('THUMBNAIL_IMAGE_HEIGHT');
+                    $newwidth  = config('thumbnail.dimensions.width');   
+                    $newheight = config('thumbnail.dimensions.height');
 
                     $tmp       = imagecreatetruecolor($newwidth,$newheight);
 
@@ -104,13 +96,10 @@ class Thumbnail
                 }
                 return true;
             }
-            else
-            {
+            else {
                 return false;
             }
-        }
-        catch(Exception $thumbnailException)
-        {
+        } catch(Exception $thumbnailException) {
             // error processing request
             echo "Got Bad Cookie";
         }
