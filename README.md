@@ -28,21 +28,22 @@
 
  - Generates Thumbnail (image) for a given video 
  - This uses **FFMpeg**.
+ - Converts video to WebM format.
 
 >### Version
 
-1.4.2
+1.4.4
 
 >### Compatibility
 
 **Laravel version**     | **Thumbnail version**
 -------- | ---
-5.4    | 1.4.2
-5.2    | 1.4.2 or 1.3.0
-5.1    | 1.4.2 or 1.3.0
-5.0    | 1.4.2 or 1.3.0
+5.4    | 1.4.4
+5.2    | 1.4.4 or 1.4.2 or 1.3.0
+5.1    | 1.4.4 or 1.4.2 or 1.3.0
+5.0    | 1.4.4 or 1.4.2 or 1.3.0
 
-
+**Note : ** For **1.4.3** and other **earlier** version documentation refer [here](https://github.com/lakshmaji/Thumbnail/blob/4ec692054a6541bb46eae6802a2b09138ce156b8/README.md) 
 
 ---
 >### Installing dependency software
@@ -163,26 +164,49 @@ Lakshmaji\Thumbnail\ThumbnailServiceProvider::class,
 ```php
 'Thumbnail' => Lakshmaji\Thumbnail\Facade\Thumbnail::class,
 ```
-- Try updating the application with composer (dependencies)
-    ```bash
-    composer update
-    ```
+- Try updating the application with composer (dependencies but not mandatory :wink:  )
+```bash
+  composer update
+```
+
 ---
 
 
 ---
 >### Configurations
 
-- Publish the configuration file 
+- Publish the configuration file , this will publish thumbnail.php file to your application **config** directory.
 ```bash
     php artisan vendor:publish
 ```
-- Configure the required FFMpeg configurations 
+- Configure the required FFMpeg configurations.
+ - FFMpeg will autodetect ffmpeg and ffprobe binaries. If you want to give binary paths explicitly, you can configure them in **.env** file.
+ - You can specify the output image dimensions in .env file. (dimensions array parameters)
+ - Add watermark or playback button url to **watermark** arry aviable in thumbnail.php
+ - Or you can configure them from laravel .env file, the sample watermark resource configurations in .env file 
+```bash
+#Thumbnail image dimensions
+THUMBNAIL_IMAGE_WIDTH  = 320
+THUMBNAIL_IMAGE_HEIGHT = 240
+
+#Watermark image
+WATERMARK_IMAGE = true
+WATERMARK_PATH  = /var/www/html/thumb/storage/watermark/p.png
+
+#Custom FFMPEG binaries path
+FFMPEG_BINARIES = true
+FFMPEG_PATH     = /opt/local/ffmpeg/bin/ffmpeg
+FFPROBE_PATH    = /opt/local/ffmpeg/bin/ffprobe
+FFMPEG_TIMEOUT  = 3600
+FFMPEG_THREADS  = 12
+```
+This ensures that all the generated thumbnails with watermarks are having fixed dimensions
+
 ---
 
 
 
->### Genearting Thumbnail
+>### Generating Thumbnail
 
 The following example illustrates the usage of Thumbnail package
 
@@ -250,7 +274,7 @@ class ThumbnailTest extends AnotherClass
       $time_to_image    = floor(($data['video_length'])/2);
 
 
-      $thumbnail_status = Thumbnail::getThumbnail($video_path,$thumbnail_path,$thumbnail_image,160,128,$time_to_image,$water_mark,true);    
+      $thumbnail_status = Thumbnail::getThumbnail($video_path,$thumbnail_path,$thumbnail_image,$time_to_image);
       if($thumbnail_status)
       {
         echo "Thumbnail generated";
@@ -274,7 +298,7 @@ $thumbnail_status = Thumbnail::getThumbnail(<VIDEO_SOURCE_DIRECTORY>,<THUMBNAIL_
 ```
 
 ```php
-$thumbnail_status = Thumbnail::getThumbnail(<VIDEO_SOURCE_DIRECTORY>,<THUMBNAIL_STORAGE_DIRECTORY>,<THUMBNAIL_NAME>,<HEIGHT_OF_IMAGE>,<WIDTH_OF_IMAGE>,<TIME_TO_TAKE_SCREENSHOT>,<WATERMARK_SOURCE_PATH>,<WATER_MARK>);
+$thumbnail_status = Thumbnail::getThumbnail(<VIDEO_SOURCE_DIRECTORY>,<THUMBNAIL_STORAGE_DIRECTORY>,<THUMBNAIL_NAME>,<TIME_TO_TAKE_SCREENSHOT>);
 
 ```
 
@@ -283,34 +307,56 @@ $thumbnail_status = Thumbnail::getThumbnail(<VIDEO_SOURCE_DIRECTORY>,<THUMBNAIL_
 |VIDEO_SOURCE_DIRECTORY |     Video resource source path i.e, the name of video along with location where video is present|mandatory| 
 | THUMBNAIL_STORAGE_DIRECTORY|    The destination path to save the generated thumbnail image|mandatory|
 | THUMBNAIL_NAME | The name of Image for output|mandatory|
-|HEIGHT_OF_IMAGE           |The height of output image             |  optional|
- | WIDTH_OF_IMAGE|       The width of output image                 |  optional|
+|~~HEIGHT_OF_IMAGE~~           |The height of output image             |  optional|
+ | ~~WIDTH_OF_IMAGE~~|       The width of output image                 |  optional|
 | TIME_TO_TAKE_SCREENSHOT    |         Time to take screenshot of the video               | optional|
-| WATERMARK_SOURCE_PATH| The name of watermark or play button along with the storage path | optional|
- |WATER_MARK         |     if this value set to true then it inserts play button or watermark on thumbnail image| optional|
-|THUMBNAIL_IMAGE_WIDTH|The height of thumbnail image with watermark|mandatory|
-|THUMBNAIL_IMAGE_HEIGHT|The width of Thumbnail image with watermark |mandatory|
+| ~~WATERMARK_SOURCE_PATH~~| The name of watermark or play button along with the storage path | optional|
+ |~~WATER_MARK~~         |     if this value set to true then it inserts play button or watermark on thumbnail image| optional|
+|~~THUMBNAIL_IMAGE_WIDTH~~|The height of thumbnail image with watermark|mandatory|
+|~~THUMBNAIL_IMAGE_HEIGHT~~|The width of Thumbnail image with watermark |mandatory|
 
-**Note** The final output thumbnail image dimensions must be specified in **.env** file.
-```bash
-THUMBNAIL_IMAGE_WIDTH  = 320
-THUMBNAIL_IMAGE_HEIGHT = 240
-```
-This ensures that all the generated thumbnails with watermarks are having fixed dimensions
+**Note** : Some of the method parameters are deprecated from version 1.4.4. For earlier versions of this package (<=1.4.3) refer [here](https://github.com/lakshmaji/Thumbnail/blob/4ec692054a6541bb46eae6802a2b09138ce156b8/README.md). The watermark and output image (thumbnail image) dimensions can be configured from **app/config.php** file.
+
 
 ----
 >### MISCELLANEOUS
 
+- To generate the thumbnail image ( screen shot of video) with playback button
+  - Your controller class
+  ```php
+  Thumbnail::getThumbnail($video_path,$thumbnail_path,$thumbnail_image,$time_to_image);
+  ```
+  - Your config file
+  ``` php
+  'watermark' => [
+          'image' => [
+              'enabled' => env('WATERMARK_IMAGE', true),
+              'path'    => env('WATERMARK_PATH', 'http://voluntarydba.com/pics/YouTube%20Play%20Button%20Overlay.png'),
+          ],
+          'video' => [
+              'enabled' => env('WATERMARK_VIDEO', false),
+              'path'    => env('WATERMARK_PATH', ''),
+          ],
+  ],
+  ```
 - To generate the thumbnail image ( screen shot of video)
 ```php
-Thumbnail::getThumbnail($video_path,$thumbnail_path,$thumbnail_image,160,128,$time_to_image,$water_mark,false);
+  Thumbnail::getThumbnail($video_path,$thumbnail_path,$thumbnail_image);
 ```
 
-- To generate the thumbnail image with watermark (play button)
+- To convert video to WebM format
 ```php
-Thumbnail::getThumbnail($video_path,$thumbnail_path,$thumbnail_image,160,128,$time_to_image,$water_mark,true);
+            $video_path = $destination_path.'/'.$file_name; // source video path
+                        $clipped_video  = $destination_path.'/'.'clipped_'.$file_name; // converted video file
+ 
+Thumbnail::clipWebM($video_path,$clipped_video);
 ```
+
+
+
 ----
 >### LICENSE
 
 [MIT](https://opensource.org/licenses/MIT)
+
+
