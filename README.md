@@ -43,7 +43,7 @@
 5.1    | 1.4.4 or 1.4.2 or 1.3.0
 5.0    | 1.4.4 or 1.4.2 or 1.3.0
 
-**Note : ** For **1.4.3** and other **earlier** version documentation refer [here](https://github.com/lakshmaji/Thumbnail/blob/4ec692054a6541bb46eae6802a2b09138ce156b8/README.md) 
+**Note:** For **1.4.3** and other **earlier** version documentation refer [here](https://github.com/lakshmaji/Thumbnail/blob/4ec692054a6541bb46eae6802a2b09138ce156b8/README.md) 
 
 ---
 >### Installing dependency software
