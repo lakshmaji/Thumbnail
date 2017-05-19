@@ -52,7 +52,7 @@ class Thumbnail
 
         try {
             if(config('thumbnail.binaries.enabled')) {
-                $ffmpeg = FFMpeg\FFMpeg::create(
+                $ffmpeg = FFMpeg::create(
                     array(
                         'ffmpeg.binaries'  => config('thumbnail.binaries.path.ffmpeg'),
                         'ffprobe.binaries' => config('thumbnail.binaries.path.ffprobe'),
