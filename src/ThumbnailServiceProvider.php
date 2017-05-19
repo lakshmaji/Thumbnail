@@ -55,6 +55,7 @@ class ThumbnailServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->mergeConfigFrom(__DIR__.'/config/thumbnail.php', 'thumbnail');
         if (method_exists(\Illuminate\Foundation\Application::class, 'singleton')) {
             $this->app->singleton('thumbnail', function($app) {
                 return new Thumbnail;
