@@ -106,7 +106,7 @@ class Thumbnail
             }
         } catch(Exception $thumbnailException) {
             // error processing request
-            throw new Exception("Got bad cookie");            
+            throw new Exception($thumbnailException->getMessage());            
         }
     }
 
