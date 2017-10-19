@@ -32,16 +32,17 @@
 
 >### Version
 
-1.4.4
+1.4.5
 
 >### Compatibility
 
 **Laravel version**     | **Thumbnail version**
 -------- | ---
-5.4    | 1.4.4
-5.2    | 1.4.4 or 1.4.2 or 1.3.0
-5.1    | 1.4.4 or 1.4.2 or 1.3.0
-5.0    | 1.4.4 or 1.4.2 or 1.3.0
+5.5    | 1.4.5
+5.4    | 1.4.5
+5.2    | 1.4.5 or 1.4.2 or 1.3.0
+5.1    | 1.4.5 or 1.4.2 or 1.3.0
+5.0    | 1.4.5 or 1.4.2 or 1.3.0
 
 **Note:** For **1.4.3** and other **earlier** version documentation refer [here](https://github.com/lakshmaji/Thumbnail/blob/4ec692054a6541bb46eae6802a2b09138ce156b8/README.md) 
 
@@ -307,13 +308,8 @@ $thumbnail_status = Thumbnail::getThumbnail(<VIDEO_SOURCE_DIRECTORY>,<THUMBNAIL_
 |VIDEO_SOURCE_DIRECTORY |     Video resource source path i.e, the name of video along with location where video is present|mandatory| 
 | THUMBNAIL_STORAGE_DIRECTORY|    The destination path to save the generated thumbnail image|mandatory|
 | THUMBNAIL_NAME | The name of Image for output|mandatory|
-|~~HEIGHT_OF_IMAGE~~           |The height of output image             |  optional|
- | ~~WIDTH_OF_IMAGE~~|       The width of output image                 |  optional|
 | TIME_TO_TAKE_SCREENSHOT    |         Time to take screenshot of the video               | optional|
-| ~~WATERMARK_SOURCE_PATH~~| The name of watermark or play button along with the storage path | optional|
- |~~WATER_MARK~~         |     if this value set to true then it inserts play button or watermark on thumbnail image| optional|
-|~~THUMBNAIL_IMAGE_WIDTH~~|The height of thumbnail image with watermark|mandatory|
-|~~THUMBNAIL_IMAGE_HEIGHT~~|The width of Thumbnail image with watermark |mandatory|
+thumbnail image| optional|
 
 **Note** : Some of the method parameters are deprecated from version 1.4.4. For earlier versions of this package (<=1.4.3) refer [here](https://github.com/lakshmaji/Thumbnail/blob/4ec692054a6541bb46eae6802a2b09138ce156b8/README.md). The watermark and output image (thumbnail image) dimensions can be configured from **app/config.php** file.
 
