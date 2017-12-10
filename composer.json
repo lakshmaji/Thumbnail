@@ -19,6 +19,16 @@
             "Lakshmaji\\Thumbnail\\": "src/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lakshmaji\\Thumbnail\\ThumbnailServiceProvider"
+            ],
+            "aliases": {
+                "Thumbnail": "Lakshmaji\\Thumbnail\\Facade\\Thumbnail"
+            }
+        }
+    },
     "minimum-stability": "dev"
 }
 
