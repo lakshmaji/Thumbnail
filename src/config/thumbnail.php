@@ -2,20 +2,20 @@
 
 /*
 |--------------------------------------------------------------------------
-| File which returns array of constants containing the thumbnail 
-| integration configurations. 
+| File which returns array of constants containing the thumbnail
+| integration configurations.
 |--------------------------------------------------------------------------
 |
 */
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
     | FFMPEG BINARIES CONFIGURATIONS
     |--------------------------------------------------------------------------
     |
-    | If you want to give binary paths explicitly, you can configure the FFMPEG 
+    | If you want to give binary paths explicitly, you can configure the FFMPEG
     | binary paths set to the below 'env' varibales.
     |
     | NOTE: FFMpeg will autodetect ffmpeg and ffprobe binaries.
@@ -78,7 +78,7 @@ return array(
 
     'THUMBNAIL_X' => '<YOUR_THUMBNAIL_X>',
 
-);
+];
 
 // php artisan vendor:publish
 

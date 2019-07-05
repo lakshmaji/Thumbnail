@@ -2,7 +2,13 @@
     "name": "lakshmaji/thumbnail",
     "description": "Thumbnails for videos",
     "keywords": [
-        "Thumbnails", "Laravel", "composer", "video", "FFMpeg","screenshot","thumbnail"
+        "Thumbnails",
+        "Laravel",
+        "composer",
+        "video",
+        "FFMpeg",
+        "screenshot",
+        "thumbnail"
     ],
     "license": "MIT",
     "authors": [
@@ -29,10 +35,8 @@
             }
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "require-dev": {
+        "squizlabs/php_codesniffer": "3.*"
+    }
 }
-
-
-
-
-

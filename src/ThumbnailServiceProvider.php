@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // Define namespace
 namespace Lakshmaji\Thumbnail;
@@ -6,26 +6,25 @@ namespace Lakshmaji\Thumbnail;
 // Include namespace
 use Illuminate\Support\ServiceProvider;
 
-
 /**
  * The Thumbnail Controller
  *
- * Thumbnail - ServicePrivider to support integration with 
+ * Thumbnail - ServicePrivider to support integration with
  * Laravel framework , which Define all methods associated
- * with a Thumbnail. Each and Every video has to be processed 
+ * with a Thumbnail. Each and Every video has to be processed
  * to produce thumbnail image
  *
- * @author     lakshmaji 
- * @package    Thumbnail
- * @version    1.4.4
- * @since      Class available since Release 1.0.0
+ * @author  lakshmaji 
+ * @package Thumbnail
+ * @version 1.4.4
+ * @since   Class available since Release 1.0.0
  */
 class ThumbnailServiceProvider extends ServiceProvider
 {
 
     /**
      * Bootstrap the application services.
-     * Publishes config file 
+     * Publishes config file
      *
      * @package Thumbnail
      * @return  void
@@ -36,9 +35,11 @@ class ThumbnailServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        $this->publishes([
+        $this->publishes(
+            [
             __DIR__.'/config/thumbnail.php' => config_path('thumbnail.php'),
-        ]);
+            ]
+        );
     }
 
     //-------------------------------------------------------------------------
@@ -56,19 +57,22 @@ class ThumbnailServiceProvider extends ServiceProvider
     public function register()
     {
         if (method_exists(\Illuminate\Foundation\Application::class, 'singleton')) {
-            $this->app->singleton('thumbnail', function($app) {
-                return new Thumbnail;
-            });
+            $this->app->singleton(
+                'thumbnail',
+                function ($app) {
+                    return new Thumbnail;
+                }
+            );
         } else {
-            $this->app['thumbnail'] = $this->app->share(function($app) {
-                return new Thumbnail;
-            });
+            $this->app['thumbnail'] = $this->app->share(
+                function ($app) {
+                    return new Thumbnail;
+                }
+            );
         }
     }
 
     //-------------------------------------------------------------------------
-
 }
 // end of ThumbnailServiceProvider class
-// end of file ThumbnailServiceProvider.php 
-
+// end of file ThumbnailServiceProvider.php
